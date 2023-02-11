@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Telegram\Bot\FileUpload\InputFile;
+use App\Http\Requests\StoreeMessageRequest;
+use App\Http\Requests\StorePhotoRequest;
 
 use Telegram\Bot\Laravel\Facades\Telegram;
 
@@ -21,7 +23,7 @@ class TelegramController extends Controller
          return view('layouts.telegram.telegramView');
      }
 
-     public function storeMessage(Request $request)
+     public function storeMessage(StoreeMessageRequest $request)
      {
     
          $text =  "<b>Name: </b>\n"
@@ -38,7 +40,7 @@ class TelegramController extends Controller
          return redirect()->back();
      }
 
-     public function storePhoto(Request $request)
+     public function storePhoto(StorePhotoRequest $request)
      {
 
          $photo = $request->file('file');
