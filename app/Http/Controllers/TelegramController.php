@@ -47,7 +47,7 @@ class TelegramController extends Controller
 
          Telegram::sendPhoto([
              'chat_id' => '-1001829391546',
-             'photo' => InputFile::createFromContents(file_get_contents($photo->getRealPath()), str_random(10) . '.' . $photo->getClientOriginalExtension()),
+             'photo' => InputFile::createFromContents(file_get_contents($photo->getRealPath()), '.' . $photo->getClientOriginalExtension()),
              'caption' => 'Photo Image'
          ]);
 
