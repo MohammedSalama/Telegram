@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TelegramController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+/*
+*   Admin Dashboard
+*/
 Route::get('/admin_dashboard', function () {
     return view('layouts.admin.admin_dashboard');
 })->name('admin_dashboard');
-// ->middleware(['auth', 'verified'])
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
+/*
+*  Telegram 
+*/
+
+Route::get('/updated-activity', [TelegramController::class , 'updatedActivity']);
+
+Route::get('/', [TelegramController::class ,'sendMessage']);
+Route::post('/send-message', [TelegramController::class , 'storeMessage']);
+Route::post('/store-photo', [TelegramController::class , 'storePhoto']);
 
 require __DIR__.'/auth.php';
