@@ -195,7 +195,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
-
+        Telegram\Bot\Laravel\TelegramServiceProvider::class,
     ],
 
     /*
@@ -211,6 +211,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Telegram'  => Irazasyed\Telegram\Laravel\Facades\Telegram::class
     ])->toArray(),
 
 ];
